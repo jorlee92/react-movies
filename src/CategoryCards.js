@@ -10,8 +10,10 @@ class CategoryCards extends Component {
         Axios.get("https://api.themoviedb.org/3/genre/" + this.props.category_id + "/movies?api_key=bd0ec9a39d66c4b5" + 
         "35d111fc22b9b4ea&language=en-US&include_adult=false&sort_by=created_at.asc").then((result) => {
             console.log(result)
-            let jsonMovies = result.data.results.map((result) => {
-              return <MediaCard title = { result.title }  img= { "https://image.tmdb.org/t/p/w500/" + result.backdrop_path } />
+            let jsonMovies = result.data.results.map((result, id) => {
+              if (id < this.props.limit) {
+                  return <MediaCard title = { result.title }  img= { "https://image.tmdb.org/t/p/w500/" + result.backdrop_path } />
+              }
             })
             this.setState({ movies : jsonMovies });
         })

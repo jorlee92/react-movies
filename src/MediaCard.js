@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class MediaCard extends Component {
 
     render() {
-        return (
+    return (
       <div className="video col-md-3">
       <img className="video-image" src={this.props.img} alt={this.props.title}/>
 

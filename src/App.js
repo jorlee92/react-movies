@@ -5,7 +5,14 @@ import CategoryCards from './CategoryCards';
 import Axios from 'axios';
 
 class App extends Component {
-
+  changeHeadliner(image, title){
+    this.setState({
+      headliner: {
+        image: image, 
+        title: title,
+      }
+    })
+  }
   constructor(props){
     super(props);
     this.state = { 
@@ -14,63 +21,20 @@ class App extends Component {
         image: "http://www.denofgeek.us/sites/denofgeekus/files/styles/main_wide/public/8/99/ultron_1_2.jpg",
         title: "Avengers: Age of Ultron",
       },
-      categories: [
-        {
-        name: "Family",
-        movies: [
-        {
-          img: "https://images-na.ssl-images-amazon.com/images/M/MV5BMWEyZjcxMDgtZWM0Ni00NmY3LWJhNTItYjE5ZDRlZTRmYWYzXkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_CR0,45,480,270_AL_UX477_CR0,0,477,268_AL_.jpg",
-          title: "Mulan"
-        },
-        {
-          img: "https://images-na.ssl-images-amazon.com/images/M/MV5BMWEyZjcxMDgtZWM0Ni00NmY3LWJhNTItYjE5ZDRlZTRmYWYzXkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_CR0,45,480,270_AL_UX477_CR0,0,477,268_AL_.jpg",
-          title: "Mulan"
-        },
-        {
-          img: "https://images-na.ssl-images-amazon.com/images/M/MV5BMWEyZjcxMDgtZWM0Ni00NmY3LWJhNTItYjE5ZDRlZTRmYWYzXkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_CR0,45,480,270_AL_UX477_CR0,0,477,268_AL_.jpg",
-          title: "Mulan"
-        }
-        
-      ],
-    }, {
-      name: "Horror",
-      movies: [
-      {
-        img: "https://images-na.ssl-images-amazon.com/images/M/MV5BMWEyZjcxMDgtZWM0Ni00NmY3LWJhNTItYjE5ZDRlZTRmYWYzXkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_CR0,45,480,270_AL_UX477_CR0,0,477,268_AL_.jpg",
-        title: "Mulan"
-      },
-      {
-        img: "https://images-na.ssl-images-amazon.com/images/M/MV5BMWEyZjcxMDgtZWM0Ni00NmY3LWJhNTItYjE5ZDRlZTRmYWYzXkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_CR0,45,480,270_AL_UX477_CR0,0,477,268_AL_.jpg",
-        title: "Mulan"
-      },
-      {
-        img: "https://images-na.ssl-images-amazon.com/images/M/MV5BMWEyZjcxMDgtZWM0Ni00NmY3LWJhNTItYjE5ZDRlZTRmYWYzXkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_CR0,45,480,270_AL_UX477_CR0,0,477,268_AL_.jpg",
-        title: "Mulan"
-      }
-      
-    ],
-  }
-      ]
-}
+    }
+
   }
   render() {
-    console.log(this.state.categories)
-    let categories = this.state.categories.map(
-      (category, i) => {
-        return <CategoryCards key = { i } category = { category.name } movies={ category.movies }/>
-      }
-    );
     return (
       <div id="App">
       <div className="container">
       <div className="row">
       <Preview image={ this.state.headliner.image } title={this.state.headliner.title}/>
       </div>
-      { categories }
-      <CategoryCards category_id = { 14 } category="Fantasy"/>
-      <CategoryCards category_id = { 10751 } category="Family"/>
-      <CategoryCards category_id = { 36 } category="History"/>
-      <CategoryCards category="action"/>
+      <CategoryCards category_id = { 14 } category="Fantasy" limit= { 8 } />
+      <CategoryCards category_id = { 10751 } category="Family" limit = { 4 } />
+      <CategoryCards category_id = { 36 } category="History" limit = { 4 } />
+      <CategoryCards category_id= { 27 } category="Horror" limit = { 4 } />
       </div>
       </div>
     );

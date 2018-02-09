@@ -19,6 +19,16 @@
 
   </div>
    
-    
+<script>
+  $('.video').click(function(e){
+    console.log(this);
+    changeProfile(this.children[0].currentSrc, this.children[0].alt, "");
+  });
+  function changeProfile(image, title, description){
+    $('.preview')[0].style["background-image"] = "url('" + image + "')";
+    $('.preview')[0].children[0].textContent = title;
+    $('.preview')[0].children[1].textContent = description;
+  }
+</script>
 </body>
 </html>
